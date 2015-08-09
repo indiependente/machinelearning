@@ -26,18 +26,18 @@ def generate(model, word = 'the', num = 50):
 
 
 if __name__ == '__main__':
-	import sys
-	filename = sys.argv[1]
-	file = open(filename, 'r')
-	words = file.read()
-	words = words.split()
+    import sys
+    filename = sys.argv[1]
+    file = open(filename, 'r')
+    words = file.read()
+    words = words.split()
 
-	firstWord = sys.argv[2]
-	numWords = int(sys.argv[3])
+    firstWord = sys.argv[2]
+    numWords = int(sys.argv[3])
 
-	pairs = makePairs(words)
-	model = nltk.ConditionalFreqDist(pairs)
-	generate(model, word = firstWord, num = numWords)
+    pairs = makePairs(words)
+    model = nltk.ConditionalFreqDist(pairs)
+    generate(model, word = firstWord, num = numWords)
 
 
 
