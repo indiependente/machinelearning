@@ -1,24 +1,10 @@
-
-# coding: utf-8
-
-# In[7]:
-
 import nltk
 import random
 
 
-file = open('divina_commedia.txt', 'r')
-words = file.read()
-words = words.split()
-
-
-# In[8]:
-
 def makePairs(arr):
     return [(arr[i], arr[i+1]) for i in xrange(len(arr)-1)]
 
-
-# In[9]:
 
 '''
 model: conditional frequency distribution,
@@ -37,14 +23,24 @@ def generate(model, word = 'the', num = 50):
         word = arr[int(len(arr)*random.random())]
 
 
-# In[10]:
-
-pairs = makePairs(words)
-model = nltk.ConditionalFreqDist(pairs)
-generate(model, word = 'come', num = 1000)
 
 
-# In[ ]:
+if __name__ == '__main__':
+	import sys
+	filename = sys.argv[1]
+	file = open(filename, 'r')
+	words = file.read()
+	words = words.split()
+
+	firstWord = sys.argv[2]
+	numWords = int(sys.argv[3])
+
+	pairs = makePairs(words)
+	model = nltk.ConditionalFreqDist(pairs)
+	generate(model, word = firstWord, num = numWords)
+
+
+
 
 
 
